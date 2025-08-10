@@ -33,7 +33,6 @@ We’re taking the hackathon spark to a product builders can use every day.
 
 ## 🎥 Demo
 - Live App (local): `npm run dev` → http://localhost:3000
-- Short Loom (placeholder): https://loom.com/share/your-demo
 - Screenshots: `/docs/screenshots/`
 
 
