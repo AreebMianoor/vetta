@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core colors */
+    --color-base: 5 7 20;
+    --color-surface: 17 22 28;
+    
+    /* Brand gradients */
+    --gradient-brand: linear-gradient(
+      135deg,
+      rgb(139 92 246) 0%,
+      rgb(59 180 255) 50%,
+      rgb(139 92 246) 100%
+    );
+    
+    /* Glass effects */
+    --glass-surface: rgba(255, 255, 255, 0.08);
+    --glass-stroke: rgba(255, 255, 255, 0.12);
+    --glass-blur: blur(16px);
+  }
+
+  body {
+    @apply bg-base text-white antialiased;
+    background: radial-gradient(
+      ellipse at top,
+      rgb(var(--color-surface)),
+      rgb(var(--color-base))
+    );
+  }
+}
+
+@layer components {
+  /* Premium card styles */
+  .card-glass {
+    @apply relative overflow-hidden;
+    background: var(--glass-surface);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-stroke);
+    box-shadow: 
+      0 8px 24px -6px rgba(0,0,0,0.15),
+      0 0 0 1px var(--glass-stroke);
+    border-radius: 24px;
+  }
+
+  .card-glass::before {
+    @apply absolute inset-0 opacity-50;
+    content: '';
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,0.1),
+      rgba(255,255,255,0)
+    );
+    border-radius: inherit;
+    mask: linear-gradient(black, black) content-box,
+          linear-gradient(black, black);
+    mask-composite: xor;
+  }
+
+  /* Premium button styles */
+  .button-primary {
+    @apply relative overflow-hidden rounded-xl px-6 py-3 text-white font-medium
+           transition-all duration-300 ease-out;
+    background: var(--gradient-brand);
+    background-size: 200% 100%;
+  }
+
+  .button-primary:hover {
+    @apply scale-[1.02] shadow-lg;
+    background-position: 100% 0;
+    box-shadow: 0 8px 24px -6px rgba(139,92,246,0.3);
+  }
+
+  .button-primary::before {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    content: '';
+    background: linear-gradient(
+      rgba(255,255,255,0.1),
+      rgba(255,255,255,0)
+    );
+  }
+
+  .button-primary:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Premium text gradients */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-brand);
+    background-size: 200% 100%;
+  }
+
+  /* Animated backgrounds */
+  .bg-gradient-animate {
+    @apply absolute inset-0 -z-10;
+    background: 
+      radial-gradient(circle at 0% 0%, rgba(139,92,246,0.15), transparent 50%),
+      radial-gradient(circle at 100% 0%, rgba(59,180,255,0.15), transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(139,92,246,0.15), transparent 50%),
+      radial-gradient(circle at 0% 100%, rgba(59,180,255,0.15), transparent 50%);
+    animation: gradient 20s linear infinite;
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+  }
+
+  /* Premium animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+}

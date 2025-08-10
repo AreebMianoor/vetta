@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgHalo" cx="50%" cy="42%" r="65%">
+      <stop offset="0%" stop-color="#6C6EFF" stop-opacity="0.35"/>
+      <stop offset="80%" stop-color="#6C6EFF" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#6C6EFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="triTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#A7B2FF"/>
+      <stop offset="100%" stop-color="#6E84FF"/>
+    </linearGradient>
+    <linearGradient id="triLeft" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2C42F0"/>
+      <stop offset="100%" stop-color="#7D2BEB"/>
+    </linearGradient>
+    <linearGradient id="triRight" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5B33F6"/>
+      <stop offset="100%" stop-color="#4B93FF"/>
+    </linearGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+
+  <!-- Transparent background; centered logo mark -->
+  <ellipse cx="256" cy="208" rx="170" ry="90" fill="url(#bgHalo)"/>
+  <g>
+    <polygon points="256,104 128,376 384,376" fill="#5F67FF" opacity="0.3" filter="url(#glow)"/>
+    <polygon points="256,104 236,184 276,184" fill="url(#triTop)"/>
+    <polygon points="256,104 128,376 236,184" fill="url(#triLeft)"/>
+    <polygon points="256,104 276,184 384,376" fill="url(#triRight)"/>
+  </g>
+</svg>
+
+

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background vignette per brand spec -->
+    <radialGradient id="bg" cx="35%" cy="22%" r="95%">
+      <stop offset="0%" stop-color="#05050A"/>
+      <stop offset="70%" stop-color="#07070D"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+
+         <!-- Subtle grid pattern -->
+     <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+       <path d="M64 0H0V64" fill="none" stroke="#1a1f3a" stroke-width="0.5" opacity="0.3"/>
+     </pattern>
+
+    <!-- Card gradients -->
+    <linearGradient id="cardFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f1636" stop-opacity="0.86"/>
+      <stop offset="60%" stop-color="#0c1230" stop-opacity="0.86"/>
+      <stop offset="100%" stop-color="#0a0f26" stop-opacity="0.86"/>
+    </linearGradient>
+    <linearGradient id="cardStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7C6BFF"/>
+      <stop offset="50%" stop-color="#6BD4FF"/>
+      <stop offset="100%" stop-color="#6B42FF"/>
+    </linearGradient>
+    <linearGradient id="cardShine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Effects -->
+    <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+    <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="36" stdDeviation="48" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+    <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feOffset dx="0" dy="2"/>
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="arithmetic" k2="1" k3="-1"/>
+    </filter>
+
+    <!-- Clip the logo/halo to the card bounds -->
+    <clipPath id="cardClip">
+      <rect x="200" y="232" width="624" height="560" rx="48"/>
+    </clipPath>
+
+    <!-- Logo gradients -->
+    <linearGradient id="triTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#A7B2FF"/>
+      <stop offset="100%" stop-color="#6E84FF"/>
+    </linearGradient>
+    <!-- Brand prism faces -->
+    <linearGradient id="triLeft" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2C42F0"/>
+      <stop offset="100%" stop-color="#7D2BEB"/>
+    </linearGradient>
+    <linearGradient id="triRight" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5B33F6"/>
+      <stop offset="100%" stop-color="#4B93FF"/>
+    </linearGradient>
+    <!-- Edge glow for prism -->
+    <filter id="edgeGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+    <radialGradient id="logoHaloG" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#6C6EFF" stop-opacity="0.75"/>
+      <stop offset="80%" stop-color="#6C6EFF" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#6C6EFF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="logoGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+         <!-- Subtle logo shine -->
+     <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+       <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+       <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.3"/>
+       <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+     </linearGradient>
+  </defs>
+
+  <!-- Background base -->
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+
+  <!-- Subtle grid background -->
+  <rect width="1024" height="1024" fill="url(#grid)"/>
+
+  <!-- Card body (centered) -->
+  <g filter="url(#dropShadow)">
+    <rect id="card" x="102.5" y="205" width="819" height="614" rx="24" fill="rgba(0,0,0,0.45)"/>
+    <!-- Clean border -->
+    <rect x="102.5" y="205" width="819" height="614" rx="24" fill="none" stroke="#2C42F0" stroke-width="2" opacity="0.9"/>
+    <!-- Outer glow -->
+    <rect x="102.5" y="205" width="819" height="614" rx="24" fill="none" stroke="#2C42F0" stroke-width="10" opacity="0.25" filter="url(#softGlow)"/>
+  </g>
+
+  <!-- Logo + halo clipped to card -->
+  <g clip-path="url(#cardClip)">
+    <!-- Halo positioned comfortably inside the card -->
+    <ellipse cx="512" cy="330" rx="170" ry="90" fill="url(#logoHaloG)" opacity="0.28"/>
+
+    <!-- 3D pyramid logo -->
+    <g>
+      <!-- Base glow triangle -->
+      <polygon points="512,286 420,436 604,436" fill="#5F67FF" opacity="0.3"/>
+      <!-- Facets -->
+      <polygon points="512,286 492,356 532,356" fill="url(#triTop)"/>
+      <polygon points="512,286 420,436 492,356" fill="url(#triLeft)"/>
+      <polygon points="512,286 532,356 604,436" fill="url(#triRight)"/>
+      <!-- Subtle shine -->
+      <polygon points="512,286 420,436 604,436" fill="url(#sweep)" opacity="0.18"/>
+      <!-- Edge glow -->
+      <polygon points="512,286 420,436 604,436" fill="none" stroke="#4265F5" stroke-width="2" opacity="0.9" filter="url(#edgeGlow)"/>
+    </g>
+  </g>
+
+  <!-- Title and tagline -->
+  <g fill="#ffffff" font-family="Space Grotesk, Montserrat, Poppins, Inter, Segoe UI, Roboto, Arial, sans-serif" text-anchor="middle">
+    <text x="512" y="560" font-size="128" font-weight="800" letter-spacing="-2">VETTA</text>
+    <text x="512" y="612" font-size="42" font-weight="400" opacity="0.96">The Network for</text>
+    <text x="512" y="662" font-size="42" font-weight="400" opacity="0.96">Builders Who Lead</text>
+  </g>
+
+
+</svg>

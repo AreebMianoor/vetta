@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-blue: 44 66 240;      /* #2C42F0 */
+  --brand-violet: 125 43 235;   /* #7D2BEB */
+  --brand-bright: 75 147 255;   /* #4B93FF */
+  --brand-accent: 108 110 255;  /* #6C6EFF */
+}
+
+@layer base {
+  body { @apply bg-[#05050A] text-white; background-image:
+      radial-gradient(circle at 0% 0%, rgba(44,66,240,.12) 0%, transparent 50%),
+      radial-gradient(circle at 100% 0%, rgba(125,43,235,.12) 0%, transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(75,147,255,.12) 0%, transparent 50%),
+      radial-gradient(circle at 0% 100%, rgba(108,110,255,.12) 0%, transparent 50%);
+    background-attachment: fixed; }
+  h1, h2, h3, h4, h5, h6 { @apply tracking-tight; }
+}
+
+@layer components {
+  .glass-panel { @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl; }
+  .glass-deep { @apply rounded-2xl border border-white/10 bg-[#0f1636]/80 backdrop-blur-2xl; }
+  .card-hover { @apply transition-all duration-300; }
+  .card-hover:hover { box-shadow: 0 20px 60px rgba(44,66,240,.25); border-color: rgba(75,147,255,.35); transform: translateY(-2px); }
+
+  .hero-beams { position: absolute; inset: -20% -10%; z-index: -1; background: conic-gradient(from 180deg at 50% 50%, rgba(44,66,240,.18), rgba(125,43,235,.18), rgba(75,147,255,.18), rgba(44,66,240,.18)); filter: blur(80px) saturate(120%); mask-image: radial-gradient(closest-side, #000 60%, transparent 100%); opacity: .6; }
+  .headline-glow { text-shadow: 0 0 24px rgba(75,147,255,.35), 0 0 48px rgba(44,66,240,.2); }
+  .segmented { @apply inline-flex items-center p-1 rounded-full border border-white/15 bg-white/5 backdrop-blur-xl; }
+  .segmented-btn { @apply px-6 py-2.5 rounded-full text-sm transition-colors; }
+  .segmented-active { @apply bg-gradient-to-r from-brand-blue/30 via-brand-violet/30 to-brand-bright/30 text-white shadow-glow; }
+  .shadow-glow { box-shadow: 0 8px 24px rgba(44,66,240,.35), 0 8px 40px rgba(125,43,235,.25); }
+  .text-gradient-blue { @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-blue via-brand-accent to-brand-bright; }
+  .ai-orb { position: relative; width: 360px; height: 360px; border-radius: 9999px; overflow: hidden; background: radial-gradient(circle at 50% 45%, rgba(108,110,255,.55), rgba(44,66,240,.25) 60%, transparent 70%), radial-gradient(circle at 50% 55%, rgba(75,147,255,.35), transparent 60%); box-shadow: inset 0 0 60px rgba(108,110,255,.4), 0 40px 120px rgba(44,66,240,.25); }
+  .ai-orb::after { content: ''; position: absolute; inset: -40%; background: conic-gradient(from 0deg, transparent 0deg, rgba(255,255,255,.25) 40deg, transparent 80deg); animation: orbSpin 8s linear infinite; filter: blur(6px); }
+  .ai-ring { position:absolute; inset: -18px; border-radius: 9999px; border: 1px solid rgba(108,110,255,.25); filter: blur(0.3px); }
+  .ai-ring.r2 { inset: -36px; opacity:.6; }
+  .ai-ring.r3 { inset: -54px; opacity:.35; }
+  .connection-line { position:absolute; height:2px; background: linear-gradient(90deg, rgba(44,66,240,0), rgba(75,147,255,.9), rgba(44,66,240,0)); filter: drop-shadow(0 0 6px rgba(75,147,255,.6)); animation: dash 2.8s ease-in-out infinite; }
+  .compare-row { @apply flex items-center justify-between gap-6 py-3; }
+  .compare-old { @apply text-white/60; }
+  .compare-new { @apply text-white; }
+  .orbit-chip { @apply px-5 py-2.5 rounded-full text-sm bg-white/10 border border-white/15 backdrop-blur-xl; box-shadow: 0 0 24px rgba(108,110,255,.25); }
+  .channel-grid { @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 w-full max-w-2xl; }
+
+  .eyebrow { @apply inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white/60; }
+  .eyebrow-dot { @apply inline-block w-1.5 h-1.5 rounded-full bg-brand-bright; }
+
+  .step-badge { @apply w-10 h-10 rounded-full text-sm font-semibold flex items-center justify-center; background: linear-gradient(180deg, rgba(75,147,255,.9), rgba(44,66,240,.9)); box-shadow: 0 10px 30px rgba(75,147,255,.35); }
+  .rule-v { @apply hidden lg:block w-1 rounded-md; background: linear-gradient(180deg, rgba(75,147,255,.0), rgba(75,147,255,.5), rgba(75,147,255,.0)); }
+  .cta-tag { @apply text-xs text-white/60; }
+
+  /* Live feed extras */
+  .pill { @apply px-2.5 py-1 rounded-full text-xs; background: linear-gradient(180deg, rgba(75,147,255,.2), rgba(44,66,240,.2)); border: 1px solid rgba(75,147,255,.35); }
+  .reward { @apply px-2.5 py-1 rounded-full text-xs bg-white/10 border border-white/15; }
+  .video-thumb { @apply relative rounded-xl overflow-hidden bg-[#0f1636]/60 border border-white/10; height: 140px; }
+  .video-thumb::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(108,110,255,.25), transparent 60%); }
+  .play-btn { @apply absolute inset-0 m-auto w-10 h-10 rounded-full flex items-center justify-center; background: linear-gradient(180deg, rgba(75,147,255,.9), rgba(44,66,240,.9)); box-shadow: 0 10px 30px rgba(75,147,255,.45); }
+  .facepile { @apply flex -space-x-3; }
+  .facepile img, .facepile span { @apply w-7 h-7 rounded-full border-2 border-[#0b0f14]; }
+}
+
+@layer utilities { .container-tight { @apply container mx-auto px-4 md:px-8; max-width: 92rem; } }
+
+@keyframes orbSpin { to { transform: rotate(360deg);} }
+@keyframes dash { 0% { transform: translateX(-10%); opacity:.2;} 40%{opacity:1;} 100%{ transform: translateX(110%); opacity:.2;} }
